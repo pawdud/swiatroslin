@@ -1,0 +1,13 @@
+/nbproject
+/public_html/web/bundles/
+/public_html/app/bootstrap.php.cache
+/public_html/app/cache/*
+/public_html/app/config/parameters.yml
+/public_html/app/logs/*
+!/public_html/app/cache/.gitkeep
+!/public_html/app/logs/.gitkeep
+/public_html/app/phpunit.xml
+/public_html/build/
+/public_html/vendor/
+/public_html/bin/
+/public_html/composer.phar

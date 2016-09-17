@@ -1,0 +1,15 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets %}
+    <link href="{{ asset('library/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />  
+    <link href="{{ asset('css/nanoscroller.css') }}" rel="stylesheet" type="text/css" />    
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('library/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('library/bootstrap/js/bootstrap.min.js') }}"></script>
+{% endblock %}
+
+{% block content %} 
+    <h1>Swiat roslin</h1>
+{% endblock %}
