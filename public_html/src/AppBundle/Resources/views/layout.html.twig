@@ -1,15 +1,32 @@
-{% extends '::base.html.twig' %}
-
-{% block stylesheets %}
-    <link href="{{ asset('library/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />  
-    <link href="{{ asset('css/nanoscroller.css') }}" rel="stylesheet" type="text/css" />    
-{% endblock %}
-
-{% block javascripts %}
-    <script src="{{ asset('library/jquery/jquery.min.js') }}"></script>
-    <script src="{{ asset('library/bootstrap/js/bootstrap.min.js') }}"></script>
-{% endblock %}
-
-{% block content %} 
-    <h1>Swiat roslin</h1>
-{% endblock %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}świat roślin{% endblock %}</title>
+        {% block stylesheets %}
+            <link href="{{ asset('library/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />  
+            <link href="{{ asset('css/nanoscroller.css') }}" rel="stylesheet" type="text/css" />    
+        {% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('library/jquery/jquery.min.js') }}"></script>
+            <script src="{{ asset('library/bootstrap/js/bootstrap.min.js') }}"></script>
+        {% endblock %}        
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        
+        <a href="{{ path('homepage') }}">Strona główna</a>
+        |
+        <a href="{{ path('offers') }}">Oferty</a>
+        |
+        <a href="{{ path('companies') }}">Szkółki</a>        
+        |
+        <a href="{{ path('contact') }}">Kontakt</a>  
+        |
+        <a href="{{ path('aboutus') }}">O nas</a>
+        
+        
+        
+        {% block content %}{% endblock %}        
+    </body>
+</html>
