@@ -1,3 +1,8 @@
+client:
+    resource: "@ClientBundle/Controller/"
+    type:     annotation
+    prefix:   /client
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
