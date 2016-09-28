@@ -6,3 +6,10 @@ client:
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+
+client_login_check:
+    pattern: /client/login/check
+    
+client_logout:
+   pattern: /client/logout

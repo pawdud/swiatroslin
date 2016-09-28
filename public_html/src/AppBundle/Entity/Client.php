@@ -189,7 +189,7 @@ class Client implements UserInterface
 
     public function getRoles()
     {
-        return 'ROLE_USER_BASE';
+        return array('ROLE_USER_BASE');
     }
     
     public function eraseCredentials()

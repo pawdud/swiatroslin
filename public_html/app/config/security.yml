@@ -8,17 +8,37 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory:
-            memory: ~
+        our_db_provider:
+            entity:
+                class: AppBundle:Client
+                property: email
+                # if you're using multiple entity managers
+                # manager_name: customer
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-
-        main:
-            anonymous: ~
+            
+        login:
+            pattern: ^/client/login$
+            security: false
+            
+        client:
+            security: true
+            pattern: ^/client            
+            provider: our_db_provider
+            
+            form_login:
+                check_path: client_login_check
+                login_path: client_login
+                default_target_path: client_homepage
+            logout:
+                path: client_logout
+                target: client_login
+            
+            
             # activate different ways to authenticate
 
             # http_basic: ~
