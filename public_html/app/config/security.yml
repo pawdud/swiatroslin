@@ -24,6 +24,9 @@ security:
         login:
             pattern: ^/client/login$
             security: false
+        register:
+            pattern: ^/client/register$
+            security: false
             
         client:
             security: true

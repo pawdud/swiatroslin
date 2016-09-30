@@ -1,0 +1,13 @@
+{% extends "ClientBundle::layout.html.twig" %}
+{% block content %}
+    <a href="{{ path('client_category_add') }}" class="btn btn-primary">Dodaj kategorię</a>
+    
+    
+    
+    
+    
+    {% include "ClientBundle:category:inc_tree.html.twig" with {'categories': categories} %}
+
+{% endblock %}
+
+

@@ -4,22 +4,19 @@
         <meta charset="UTF-8" />
         <title>{% block title %}Panel{% endblock %}</title>
         {% block stylesheets %}
-            <link href="{{ asset('library/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />  
+            <link href="{{ asset('library/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />  
             <link href="{{ asset('css/nanoscroller.css') }}" rel="stylesheet" type="text/css" />    
         {% endblock %}
         {% block javascripts %}
             <script src="{{ asset('library/jquery/jquery.min.js') }}"></script>
-            <script src="{{ asset('library/bootstrap/js/bootstrap.min.js') }}"></script>
+            <script src="{{ asset('library/bootstrap/dist/js/bootstrap.min.js') }}"></script>
         {% endblock %}        
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
-        
-        <a href="{{ path('client_logout') }}">Wyloguj</a>
-      
-        
-        
-        
+        <a href="{{ path('client_homepage') }}">Panel</a>
+        <a href="{{ path('client_category') }}">Kategorie</a>
+        <a href="{{ path('client_logout') }}">Wyloguj</a>        
         {% block content %}{% endblock %}        
     </body>
 </html>
