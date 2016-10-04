@@ -1,6 +1,230 @@
 {% extends 'AppBundle::layout.html.twig' %}
 
+
+
+
+
 {% block content %}    
+    
+    {% raw %}
+    <style>
+        
+        .search .search__element.search__element_hidden{
+            display: none;
+        }
+        
+        .search__colorLeafRow, .search__colorFlowerRow, .search__termFruitingRow, .search__colorFruitsRow, .search__row{
+            display: inline-block;
+            list-style: none;
+        }
+        
+        
+        .search__colorLeafElement_checked {
+            border: 1px solid red;
+        }
+        
+        
+        .search__colorFlower_checked {
+            border: 1px solid red;
+        }
+        .search__colorFruits_checked {
+            border: 1px solid red;
+        }
+        .search__termFruiting_checked {
+            border: 1px solid red;
+        }
+        .search__termFlowering_checked {
+            border: 1px solid red;
+        }
+        .search__place_checked {
+            border: 1px solid red;
+        }
+        .search__humidity_checked {
+            border: 1px solid red;
+        }
+        .search__cutting_checked {
+            border: 1px solid red;
+        }
+        
+        
+    </style>
+    
+    
+    <script>
+        "use strict"
+        
+        $(function(){
+           console.log('initialized');
+           var form = $('#search')[0];
+        
+            $('[data-trigger]', form).on('click', function(){                
+                var trg = $('#' + $(this).attr('data-trigger-id')); 
+                
+                console.log(trg.is(':checked'));
+                
+                trg.prop('checked', !trg.is(':checked'));
+                
+                var cls =  $(this).attr('data-toggle-class');
+                $(this).toggleClass(cls);
+            })
+            
+            
+        });
+        
+        
+        
+        
+        
+        
+    </script>
+    
+    
+{% endraw %}
+    
+    
+    
+    {{ form_start(form, {'attr': {'class': 'search', 'id': 'search' } }) }}
+    
+    
+        <div>     
+            {# siła wzrostu #}
+            {{ form_label(form.growth) }}
+            {{ form_widget(form.growth, {attr: {class: 'search__element'}}) }}
+        </div>
+        
+        <div>
+            {# zimozielona #}
+            {{ form_label(form.evergreen) }}
+            {{ form_widget(form.evergreen, {attr: {class: 'search__element'}}) }}
+        </div>
+        
+        <div>
+            {# mrozoodporna #}
+            {{ form_label(form.hardy) }}
+            {{ form_widget(form.hardy, {attr: {class: 'search__element'}}) }}
+        </div>
+       
+        
+        <div>
+             {# barwa lisci #}
+            {{ form_label(form.colorLeaf) }}
+
+            {{ form_widget(form.colorLeaf, {attr: {class: 'search__element search__element_hidden'}}) }}                   
+            {% for item in form.colorLeaf.vars.choices  %}
+                <ul class="search__colorLeafRow">
+                    <li>                   
+                        <span data-trigger data-trigger-id="searchProductType_colorLeaf_{{ loop.index0 }}" data-toggle-class="search__colorLeafElement_checked" class="search__colorLeafElement search__colorLeafElement_{{item.label}} {% if item.data in form.colorLeaf.vars.data %}search__colorLeafElement_checked{% endif %}">{{ item.label }}</span>
+                    </li>
+                </ul>            
+            {% endfor %}
+        </div>
+        
+        
+        <div>
+            {# barwa kwiatów #}
+            {{ form_label(form.colorFlower) }}   
+            {{ form_widget(form.colorFlower, {attr: {class: 'search__element search__element_hidden'}}) }}                   
+            {% for item in form.colorFlower.vars.choices  %}
+                <ul class="search__colorFlowerRow">
+                    <li>                    
+                        <span data-trigger data-trigger-id="searchProductType_colorFlower_{{ loop.index0 }}" data-toggle-class="search__colorFlower_checked" class="search__colorFlowerElement search__colorFlowerElement_{{item.label}} {% if item.data in form.colorFlower.vars.data %}search__colorFlower_checked{% endif %}">{{ item.label }}</span>
+                    </li>
+                </ul>            
+            {% endfor %}
+        </div>
+        
+        
+        <div>
+            {# barwa owoców #}
+            {{ form_label(form.colorFruits) }}   
+            {{ form_widget(form.colorFruits, {attr: {class: 'search__element search__element_hidden'}}) }}                   
+            {% for item in form.colorFruits.vars.choices  %}
+                <ul class="search__colorFruitsRow">
+                    <li>                    
+                        <span data-trigger data-trigger-id="searchProductType_colorFruits_{{ loop.index0 }}" data-toggle-class="search__colorFruits_checked" class="search__colorFruitst search__colorFruits_{{item.label}} {% if item.data in form.colorFruits.vars.data %}search__colorFruits_checked{% endif %}">{{ item.label }}</span>
+                    </li>
+                </ul>            
+            {% endfor %}
+        </div>
+        
+        
+        <div>
+            {# termin owocowania #}
+            {{ form_label(form.termFruiting) }}   
+            {{ form_widget(form.termFruiting, {attr: {class: 'search__element search__element_hidden'}}) }}                   
+            {% for item in form.termFruiting.vars.choices  %}
+                <ul class="search__colorFlowerRow">
+                    <li>                    
+                        <span data-trigger data-trigger-id="searchProductType_termFruiting_{{ loop.index0 }}" data-toggle-class="search__termFruiting_checked" class="search__termFruiting search__termFruiting_{{item.label}} {% if item.data in form.termFruiting.vars.data %}search__termFruiting_checked{% endif %}">{{ item.label }}</span>
+                    </li>
+                </ul>            
+            {% endfor %}
+        </div>
+        
+        <div>
+            {# termin kwitnienia #}
+            {{ form_label(form.termFlowering) }}   
+            {{ form_widget(form.termFlowering, {attr: {class: 'search__element search__element_hidden'}}) }}                   
+            {% for item in form.termFlowering.vars.choices  %}
+                <ul class="search__row">
+                    <li>                    
+                        <span data-trigger data-trigger-id="searchProductType_termFlowering_{{ loop.index0 }}" data-toggle-class="search__termFlowering_checked" class="search__termFlowering search__termFlowering_{{item.label}} {% if item.data in form.termFlowering.vars.data %}search__termFlowering_checked{% endif %}">{{ item.label }}</span>
+                    </li>
+                </ul>            
+            {% endfor %}
+        </div>
+        
+        <div>
+            {# stanowisko #}
+            {{ form_label(form.place) }}   
+            {{ form_widget(form.place, {attr: {class: 'search__element search__element_hidden'}}) }}                   
+            {% for item in form.place.vars.choices  %}
+                <ul class="search__row">
+                    <li>                    
+                        <span data-trigger data-trigger-id="searchProductType_place_{{ loop.index0 }}" data-toggle-class="search__place_checked" class="search__place search__place_{{item.label}} {% if item.data in form.termFlowering.vars.data %}search__place_checked{% endif %}">{{ item.label }}</span>
+                    </li>
+                </ul>            
+            {% endfor %}
+        </div>
+        
+        <div>
+            {# wilgotność #}
+            {{ form_label(form.humidity) }}   
+            {{ form_widget(form.humidity, {attr: {class: 'search__element search__element_hidden'}}) }}                   
+            {% for item in form.humidity.vars.choices  %}
+                <ul class="search__row">
+                    <li>                    
+                        <span data-trigger data-trigger-id="searchProductType_humidity_{{ loop.index0 }}" data-toggle-class="search__humidity_checked" class="search__humidity search__humidity_{{item.label}} {% if item.data in form.humidity.vars.data %}search__humidity_checked{% endif %}">{{ item.label }}</span>
+                    </li>
+                </ul>            
+            {% endfor %}
+        </div>
+        
+        <div>
+            {# odczyn gleby #}
+            {{ form_label(form.soilReaction) }}   
+            {{ form_widget(form.soilReaction, {attr: {class: 'search__element'}}) }}                   
+           
+        </div>
+        
+        <div>
+            {# cięcie #}
+            {{ form_label(form.cutting) }}   
+            {{ form_widget(form.cutting, {attr: {class: 'search__element search__element_hidden'}}) }}                   
+            {% for item in form.cutting.vars.choices  %}
+                <ul class="search__row">
+                    <li>                    
+                        <span data-trigger data-trigger-id="searchProductType_cutting_{{ loop.index0 }}" data-toggle-class="search__cutting_checked" class="search__cutting search__cutting_{{item.label}} {% if item.data in form.cutting.vars.data %}search__cutting_checked{% endif %}">{{ item.label }}</span>
+                    </li>
+                </ul>            
+            {% endfor %}
+        </div>
+        
+        
+    
+       
+        <input type="submit" value="Create"  class="btn btn-default pull-right" />
+    {{ form_end(form) }}
     
     
     
